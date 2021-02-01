@@ -1,16 +1,27 @@
-import React from 'react';
+import React from "react";
 
-import data from '../data';
-import './styles.scss';
+import data from "../data";
+import "./styles.scss";
 
-import Pokemon from './components/Pokemon';
+import Pokemon from "./components/Pokemon";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      pokemon: data
-    };
+  state = {
+    pokemon: [],
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        pokemon: data,
+      });
+    }, 3000);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.pokemon.length < this.state.pokemon.length) {
+      console.log("We have loaded Pokemon Data");
+    }
   }
 
   render() {

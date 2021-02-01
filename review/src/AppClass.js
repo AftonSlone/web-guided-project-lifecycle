@@ -4,19 +4,33 @@ class AppClass extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "Warren"
+      name: "Warren",
     };
+    console.log("APPCLASS: Component Constructed");
   }
 
   handleNameButtonClick = (e) => {
     this.setState({
       ...this.state,
-      name: "Allison"
+      name: "Allison",
     });
   };
 
+  componentDidMount() {
+    console.log("APPCLASS: Component Mounted");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log([prevProps, prevState]);
+    console.log("APPCLASS: Component Updated");
+    console.log("PROPS--------------");
+    console.log(prevProps, this.props);
+    console.log("STATE---------------");
+    console.log(prevState, this.state);
+  }
 
   render() {
+    console.log("APPCLASS: Component Rendered");
     return (
       <div>
         <h1>Hello {this.state.name}.</h1>
